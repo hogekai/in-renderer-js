@@ -1,7 +1,7 @@
 {
   "name": "in-renderer-js",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "files": [
     "dist",
     "index.d.ts"
