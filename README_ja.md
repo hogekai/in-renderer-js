@@ -68,7 +68,7 @@ var adUnit = {
     },
   ], // 新しく追加されたプロパティ
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("{AD_UNIT_TARGET_ELEMENT_ID}", bid);
@@ -105,7 +105,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid); // `ad-unit-1`に置換された
@@ -151,7 +151,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid);
@@ -214,7 +214,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid);
@@ -274,7 +274,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -333,7 +333,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -373,7 +373,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -398,9 +398,9 @@ InRenderer.js では、動画広告とネイティブ広告の描画に特化し
 
 | URL                                                                                   | クラス           | 説明                           |
 | ------------------------------------------------------------------------------------- | ---------------- | ------------------------------ |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js        | InRenderer       | バナー・動画・ネイティブの描画 |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-video-renderer.umd.min.js  | InVideoRenderer  | 動画の描画                     |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-native-renderer.umd.min.js | InNativeRenderer | ネイティブの描画               |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js        | InRenderer       | バナー・動画・ネイティブの描画 |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-video-renderer.umd.min.js  | InVideoRenderer  | 動画の描画                     |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-native-renderer.umd.min.js | InNativeRenderer | ネイティブの描画               |
 
 下記が例です:
 
@@ -417,7 +417,7 @@ var adUnits = [
         mimes: ["video/mp4"],
         protocols: [5],
         renderer: {
-          url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-video-renderer.umd.min.js",
+          url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-video-renderer.umd.min.js",
           render: (bid) => {
             var inRenderer = new InVideoRenderer();
             inRenderer.render("video", bid);
