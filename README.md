@@ -68,7 +68,7 @@ var adUnit = {
     },
   ], // Newly added property
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("{AD_UNIT_TARGET_ELEMENT_ID}", bid);
@@ -105,7 +105,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid); // Replaced with `ad-unit-1`
@@ -151,7 +151,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid);
@@ -164,7 +164,7 @@ Now the ad slot is defined as a multi-format ad slot.
 
 ### Adding Native Ads to the Ad Slot
 
-To maximize ad slot revenue, add native format to the ad slot. InRenderer.js supports Prebid.js's [latest native ad implementation documentation](https://docs.prebid.org/prebid/native-implementation.html), so refer to that during implementation.
+To maximize ad slot revenue, add native format to the ad slot. InRenderer.js supports Prebid.js's [1.0.7 native ad implementation documentation](https://docs.prebid.org/prebid/native-implementation.html), so refer to that during implementation.
 However, note that it only supports configurations using `native.adTemplate` rather than defining native templates on the ad server side.
 
 > In InRenderer.js, native ad rendering does not internally generate an iframe due to style continuity and the nature of in-renderer integration. If you have any issues or opinions about this behavior, please report them through issues in the [repository](https://github.com/hogekai/in-renderer-js).
@@ -214,7 +214,7 @@ var adUnit = {
     },
   ],
   renderer: {
-    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+    url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
     render: (bid) => {
       var inRenderer = new InRenderer();
       inRenderer.render("ad-unit-1", bid);
@@ -274,7 +274,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -333,7 +333,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -373,7 +373,7 @@ var adUnits = [
       },
     },
     renderer: {
-      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js",
+      url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js",
       render: (bid) => {
         var inRenderer = new InRenderer();
         inRenderer.render("ad-unit-1", bid);
@@ -398,9 +398,9 @@ InRenderer.js provides specialized entry points for rendering video ads and nati
 
 | URL                                                                                   | Class            | Description                      |
 | ------------------------------------------------------------------------------------- | ---------------- | -------------------------------- |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-renderer.umd.min.js        | InRenderer       | Render banner, video, and native |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-video-renderer.umd.min.js  | InVideoRenderer  | Render video only                |
-| https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-native-renderer.umd.min.js | InNativeRenderer | Render native only               |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-renderer.umd.min.js        | InRenderer       | Render banner, video, and native |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-video-renderer.umd.min.js  | InVideoRenderer  | Render video only                |
+| https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-native-renderer.umd.min.js | InNativeRenderer | Render native only               |
 
 Here's an example:
 
@@ -417,7 +417,7 @@ var adUnits = [
         mimes: ["video/mp4"],
         protocols: [5],
         renderer: {
-          url: "https://cdn.jsdelivr.net/npm/in-renderer-js@latest/dist/in-video-renderer.umd.min.js",
+          url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1.0.7/dist/in-video-renderer.umd.min.js",
           render: (bid) => {
             var inRenderer = new InVideoRenderer();
             inRenderer.render("video", bid);
