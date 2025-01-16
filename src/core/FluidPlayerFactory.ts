@@ -24,7 +24,6 @@ export class FluidPlayerFactory {
   public async create(rePlay: () => any): Promise<FluidPlayerInstance> {
     const player = fluidPlayer(this.target, {
       layoutControls: {
-        // @ts-ignore
         roundedCorners: 8,
         fillToContainer: true,
         autoPlay: false,
