@@ -10,6 +10,7 @@ var adUnit = {
       sizes: [[300, 250]],
     },
     video: {
+      context: 'outstream',
       mimes: ['video/mp4']
     }
   },
