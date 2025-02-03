@@ -9,7 +9,7 @@ describe("InRenderer", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("バナーの入札でバナー広告が描画される", async () => {
+  it("render banner ad by banner bid", async () => {
     const renderSpy = vi.spyOn(BannerRenderApplicationService.prototype, 'render');
     const sut = new InRenderer();
     const bid = {
@@ -27,7 +27,7 @@ describe("InRenderer", () => {
     expect(renderSpy).toHaveBeenCalledWith(document.getElementById('target'), bid, {});
   });
 
-  it('動画入札で動画広告が描画される', async () => {
+  it('render video ad by video bid', async () => {
     const renderSpy = vi.spyOn(VideoRenderApplicationService.prototype, 'render');
     const sut = new InRenderer();
     const bid = {
@@ -45,7 +45,7 @@ describe("InRenderer", () => {
     expect(renderSpy).toHaveBeenCalledWith(document.getElementById('target'), bid, {});
   });
 
-  it('ネイティブ入札でネイティブ広告が描画される', async () => {
+  it('render native ad by native bid', async () => {
     const renderSpy = vi.spyOn(NativeRenderApplicationService.prototype, 'render');
     const sut = new InRenderer();
     const bid = {
@@ -106,7 +106,7 @@ describe("InRenderer", () => {
     }, {});
   });
 
-  it("ターゲット要素が無効な場合は例外が発生する", async () => {
+  it("throws error when target element is invalid", async () => {
     document.getElementById("target")?.remove();
     const sut = new InRenderer();
 

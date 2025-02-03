@@ -1,4 +1,7 @@
-import { InvalidBidException, InvalidTargetElementException } from "@/exception";
+import {
+  InvalidBidException,
+  InvalidTargetElementException,
+} from "@/exception";
 import { InVideoRenderer } from "@/InVideoRenderer";
 import { VideoRenderApplicationService } from "@/VideoRenderApplicationService";
 
@@ -7,7 +10,7 @@ describe("InVideoRenderer", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("動画入札で動画広告が描画される", async () => {
+  it("render video bid by video bid", async () => {
     const renderSpy = vi.spyOn(
       VideoRenderApplicationService.prototype,
       "render"
@@ -29,12 +32,12 @@ describe("InVideoRenderer", () => {
       document.getElementById("target"),
       bid,
       {
-        logo: undefined
+        logo: undefined,
       }
     );
   });
 
-  it('バナー入札で無効な入札の例外が発生する', async () => {
+  it("throws invalid bid error when passing banner bid", async () => {
     const sut = new InVideoRenderer();
     const bid = {
       adUnitCode: "ad-unit",
@@ -45,10 +48,12 @@ describe("InVideoRenderer", () => {
       cpm: 100,
     };
 
-    await expect(() => sut.render("target", bid)).rejects.toThrow(InvalidBidException);
+    await expect(() => sut.render("target", bid)).rejects.toThrow(
+      InvalidBidException
+    );
   });
 
-  it('ネイティブ入札で無効な入札の例外が発生する', async () => {
+  it("throws invalid bid error when passing native bid", async () => {
     const sut = new InVideoRenderer();
     const bid = {
       adUnitCode: "ad-unit",
@@ -76,12 +81,13 @@ describe("InVideoRenderer", () => {
       },
       cpm: 100,
     };
-    
 
-    await expect(() => sut.render("target", bid)).rejects.toThrow(InvalidBidException);
+    await expect(() => sut.render("target", bid)).rejects.toThrow(
+      InvalidBidException
+    );
   });
 
-  it("ターゲット要素が無効な場合は例外が発生する", async () => {
+  it("throws error when target element is invalid", async () => {
     document.getElementById("target")?.remove();
     const sut = new InVideoRenderer();
 

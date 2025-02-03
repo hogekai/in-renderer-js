@@ -7,7 +7,7 @@ describe("InNativeRenderer", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("ネイティブ入札でネイティブ広告が描画される", async () => {
+  it("render native ad by native bid", async () => {
     const renderSpy = vi.spyOn(
       NativeRenderApplicationService.prototype,
       "render"
@@ -50,7 +50,7 @@ describe("InNativeRenderer", () => {
     );
   });
 
-  it('バナー入札で無効な入札の例外が発生する', async () => {
+  it('throws invalid bid error when passing banner bid', async () => {
     const sut = new InNativeRenderer();
     const bid = {
       adUnitCode: "ad-unit",
@@ -64,7 +64,7 @@ describe("InNativeRenderer", () => {
     await expect(() => sut.render("target", bid)).rejects.toThrow(InvalidBidException);
   });
 
-  it('動画入札で無効な入札の例外が発生する', async () => {
+  it('throws invalid bid error when passing video bid', async () => {
     const sut = new InNativeRenderer();
     const bid = {
       adUnitCode: "ad-unit",
@@ -78,7 +78,7 @@ describe("InNativeRenderer", () => {
     await expect(() => sut.render("target", bid)).rejects.toThrow(InvalidBidException);
   });
 
-  it("ターゲット要素が無効な場合は例外が発生する", async () => {
+  it("throws error when target element is invalid", async () => {
     document.getElementById("target")?.remove();
     const sut = new InNativeRenderer();
 

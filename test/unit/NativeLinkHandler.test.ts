@@ -9,7 +9,7 @@ describe("Native link handler", () => {
       '<div id="target"><div class="pb-click" hb_native_asset_id="1">click</div></div>';
   });
 
-  it("アセットにリンクが含まれている場合はアセットのリンクでクリックを追跡する", () => {
+  it("track click with asset link when asset includes link", () => {
     const target = document.getElementById("target") as HTMLDivElement;
     const beaconMock = vi
       .spyOn(window.navigator, "sendBeacon")
@@ -40,7 +40,7 @@ describe("Native link handler", () => {
     expect(beaconMock).toHaveBeenCalledWith("https://example.com/title");
   });
 
-  it("アセットにリンクが含まれていない場合はマスターのリンクでクリックを追跡する", () => {
+  it("track click with master link when asset does not include link", () => {
     const target = document.getElementById("target") as HTMLDivElement;
     const beaconMock = vi
       .spyOn(window.navigator, "sendBeacon")

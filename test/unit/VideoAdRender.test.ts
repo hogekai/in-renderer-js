@@ -7,6 +7,7 @@ describe("Video ad render", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
+  // render video ad container
   it("動画広告コンテナが描画される", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     Object.defineProperty(target, "offsetWidth", {
@@ -32,7 +33,7 @@ describe("Video ad render", () => {
     expect(target.style.display).toBe("block");
   });
 
-  it('ビューポートに入ったら動画広告が再生される', async () => {
+  it('play video ad when in viewport', async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     Object.defineProperty(target, "offsetWidth", {
       get: vi.fn().mockReturnValue(640),
@@ -55,7 +56,7 @@ describe("Video ad render", () => {
     expect(player.play).toHaveBeenCalledOnce();
   });
 
-  it('ビューポートから出たら動画広告が停止される', async () => {
+  it('stop video ad when out of viewport', async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     Object.defineProperty(target, "offsetWidth", {
       get: vi.fn().mockReturnValue(640),

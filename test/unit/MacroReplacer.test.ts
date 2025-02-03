@@ -1,7 +1,7 @@
 import { MacroReplacer } from "@/core/MacroReplacer";
 
 describe("Macro replacer", () => {
-  it("オークションプライスマクロが置換される", () => {
+  it("replace auction price macro", () => {
     const sut = new MacroReplacer({
       cpm: 1,
     });
@@ -12,7 +12,7 @@ describe("Macro replacer", () => {
     expect(result).toEqual("<div>1</div>");
   });
 
-  it("クリックスローマクロが置換される", () => {
+  it("replace click throw macro", () => {
     const sut = new MacroReplacer({
       clickThrough: "https://example.com/clickThrough",
       cpm: 0,
@@ -24,7 +24,7 @@ describe("Macro replacer", () => {
     expect(result).toEqual("<div>https://example.com/clickThrough</div>");
   });
 
-  it("複数のマクロがまとめて置換される", () => {
+  it("replace multiple macros", () => {
     const sut = new MacroReplacer({
       clickThrough: "https://example.com/clickThrough",
       cpm: 1,
@@ -36,7 +36,7 @@ describe("Macro replacer", () => {
     expect(result).toEqual("<div>https://example.com/clickThrough, 1</div>");
   });
 
-  it("マクロが配置されていない場合はプレーンな広告素材で返る", () => {
+  it("returns normal ad markup when macro is not placed", () => {
     const sut = new MacroReplacer({
       cpm: 0,
     });

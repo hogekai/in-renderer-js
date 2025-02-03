@@ -6,7 +6,7 @@ describe("HTML5 Ad Render", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("HTML5広告が描画される", () => {
+  it("render to html5", () => {
     const targetElement = document.getElementById("target") as HTMLDivElement;
     const inlineFrameRender = new InlineFrameRender();
     const sut = new HTML5AdRender();
@@ -28,7 +28,7 @@ describe("HTML5 Ad Render", () => {
     );
   });
 
-  it("リセットCSSが設定されている", () => {
+  it("sets the reset css", () => {
     const targetElement = document.getElementById("target") as HTMLDivElement;
     const inlineFrameRender = new InlineFrameRender();
     const sut = new HTML5AdRender();

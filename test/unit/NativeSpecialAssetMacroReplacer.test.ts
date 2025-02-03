@@ -1,7 +1,7 @@
 import { NativeSpecialAssetMacroReplacer } from "@/core/NativeSpecialAssetMacroReplacer";
 
 describe("Native special asset macro replacer", () => {
-  it("ネイティブのリンクURLマクロが置換される", () => {
+  it("replace native url macro", () => {
     const ad = "<div>##hb_native_linkurl##</div>";
     const sut = new NativeSpecialAssetMacroReplacer();
 
@@ -14,7 +14,7 @@ describe("Native special asset macro replacer", () => {
     expect(result).toEqual("<div>https://example.com/linkurl</div>");
   });
 
-  it("ネイティブのプライバシーマクロが置換される", () => {
+  it("replace native privacy macro", () => {
     const ad = "<div>##hb_native_privacy##</div>";
     const sut = new NativeSpecialAssetMacroReplacer();
 

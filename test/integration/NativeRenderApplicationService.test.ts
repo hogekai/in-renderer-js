@@ -7,7 +7,7 @@ describe("Native render application service", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("広告テンプレートにすべてのアセットが描画された状態でネイティブ広告が描画される", async () => {
+  it("render native ad when all assets are rendered in ad template", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     const domainLogger = mock<IDomainLogger>();
     const viewableTracker = mock<IViewableTracker>();
@@ -47,6 +47,7 @@ describe("Native render application service", () => {
     expect(target.innerHTML).toBe("<div>title text</div>");
   });
 
+  // logs when OpenRTB is not native bid
   it("OpenRTBネイティブ入札じゃない場合はログに記録される", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     const domainLogger = mock<IDomainLogger>();
@@ -72,7 +73,7 @@ describe("Native render application service", () => {
     expect(domainLogger.unsupportedNativeAsset).toHaveBeenCalledOnce();
   });
 
-  it("広告テンプレートが指定されたいない場合はログに記録される", async () => {
+  it("logs when ad template is not specified", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     const domainLogger = mock<IDomainLogger>();
     const viewableTracker = mock<IViewableTracker>();
@@ -97,7 +98,7 @@ describe("Native render application service", () => {
     expect(domainLogger.missingAdTemplate).toHaveBeenCalledOnce();
   });
 
-  it("インプレッションビューアブルイベントが追跡される", async () => {
+  it("track impression viewable event", async () => {
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>({

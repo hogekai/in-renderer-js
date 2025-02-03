@@ -7,7 +7,7 @@ describe("Banner render application service", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("マクロが置換された状態でバナー広告が描画される", () => {
+  it("render banner ad with macro replaced", () => {
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>();
@@ -37,7 +37,7 @@ describe("Banner render application service", () => {
     );
   });
 
-  it("無効なバナー入札が渡されるとログに記録される", () => {
+  it("logs when attempting to pass invalid banner bid", () => {
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>();
@@ -58,7 +58,7 @@ describe("Banner render application service", () => {
     expect(domainLogger.invalidBid).toHaveBeenCalledOnce();
   });
 
-  it("インプレッションビューアブルイベントが追跡される", () => {
+  it("track impression view ability event", () => {
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>({

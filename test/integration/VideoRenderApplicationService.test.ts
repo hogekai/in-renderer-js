@@ -4,8 +4,8 @@ import fluidPlayer from "fluid-player";
 import { mock } from "vitest-mock-extended";
 
 vi.mock("fluid-player");
-vi.mock('fetch');
-vi.mock('navigator');
+vi.mock("fetch");
+vi.mock("navigator");
 
 describe("Video render application service", () => {
   beforeEach(() => {
@@ -13,19 +13,24 @@ describe("Video render application service", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it('VAST XMLとVAST URLを指定するとVAST URLが発火され、でVAST XMlがレンダリング用の素材として使用される', async () => {
+  it("VAST XML is used as markup for rendering after emitting VAST URL when VAST XML and VAST URL are specified", async () => {
     const fluidPlayerMock = vi.mocked(fluidPlayer);
-    vi.spyOn(window, 'fetch');
-    const beaconMock = vi.spyOn(window.navigator, 'sendBeacon').mockReturnValue(true);
+    vi.spyOn(window, "fetch");
+    const beaconMock = vi
+      .spyOn(window.navigator, "sendBeacon")
+      .mockReturnValue(true);
     const domainLogger = mock<IDomainLogger>();
     const viewableTracker = mock<IViewableTracker>();
     const target = document.getElementById("target") as HTMLDivElement;
-    const sut = new VideoRenderApplicationService(domainLogger, viewableTracker);
+    const sut = new VideoRenderApplicationService(
+      domainLogger,
+      viewableTracker
+    );
     const bid = {
       mediaType: "video" as const,
       playerWidth: 640,
       playerHeight: 480,
-      vastXml: '<VAST></VAST>',
+      vastXml: "<VAST></VAST>",
       vastUrl: "https://example.com/vasturl",
     };
 
@@ -42,7 +47,8 @@ describe("Video render application service", () => {
               adClickable: true,
               adText: "Learn More",
               roll: "preRoll",
-              vastTag: "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
+              vastTag:
+                "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
             },
           ],
           vastAdvanced: {
@@ -52,20 +58,23 @@ describe("Video render application service", () => {
       })
     );
     expect(beaconMock).toHaveBeenCalledOnce();
-    expect(beaconMock).toHaveBeenCalledWith('https://example.com/vasturl');
+    expect(beaconMock).toHaveBeenCalledWith("https://example.com/vasturl");
   });
 
-  it('VAST XMLを指定するとVAST XMLがVAST TAGに指定される', async () => {
+  it("VAST TAG is specified to VAST XML when VAST XML is specified", async () => {
     const fluidPlayerMock = vi.mocked(fluidPlayer);
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>();
-    const sut = new VideoRenderApplicationService(domainLogger, viewableTracker);
+    const sut = new VideoRenderApplicationService(
+      domainLogger,
+      viewableTracker
+    );
     const bid = {
       mediaType: "video" as const,
       playerWidth: 640,
       playerHeight: 480,
-      vastXml: '<VAST></VAST>',
+      vastXml: "<VAST></VAST>",
     };
 
     await sut.render(target, bid, {});
@@ -81,7 +90,8 @@ describe("Video render application service", () => {
               adClickable: true,
               adText: "Learn More",
               roll: "preRoll",
-              vastTag: "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
+              vastTag:
+                "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
             },
           ],
           vastAdvanced: {
@@ -92,18 +102,23 @@ describe("Video render application service", () => {
     );
   });
 
-  it('VAST URLを指定するとVAST URLのレスポンスがVAST TAGに指定される', async () => {
+  it("VAST response is specified in VAST TAG when VAST URL is specified", async () => {
     const fluidPlayerMock = vi.mocked(fluidPlayer);
     const domainLogger = mock<IDomainLogger>();
-    const fetchMock = vi.spyOn(window, 'fetch').mockImplementation(async () => new Response('<VAST></VAST>'));
+    const fetchMock = vi
+      .spyOn(window, "fetch")
+      .mockImplementation(async () => new Response("<VAST></VAST>"));
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>();
-    const sut = new VideoRenderApplicationService(domainLogger, viewableTracker);
+    const sut = new VideoRenderApplicationService(
+      domainLogger,
+      viewableTracker
+    );
     const bid = {
       mediaType: "video" as const,
       playerWidth: 640,
       playerHeight: 480,
-      vastUrl: 'https://example.com/vastUrl',
+      vastUrl: "https://example.com/vastUrl",
     };
 
     await sut.render(target, bid, {});
@@ -119,7 +134,8 @@ describe("Video render application service", () => {
               adClickable: true,
               adText: "Learn More",
               roll: "preRoll",
-              vastTag: "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
+              vastTag:
+                "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
             },
           ],
           vastAdvanced: {
@@ -129,19 +145,22 @@ describe("Video render application service", () => {
       })
     );
     expect(fetchMock).toHaveBeenCalledOnce();
-    expect(fetchMock).toHaveBeenCalledWith('https://example.com/vastUrl');
+    expect(fetchMock).toHaveBeenCalledWith("https://example.com/vastUrl");
   });
 
-  it("動画広告が描画される", async () => {
+  it("render video ads", async () => {
     const fluidPlayerInstanceMock = mock<FluidPlayerInstance>();
-    vi.spyOn(window, 'fetch');
+    vi.spyOn(window, "fetch");
     const fluidPlayerMock = vi
       .mocked(fluidPlayer)
       .mockImplementation(() => fluidPlayerInstanceMock);
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>();
-    const sut = new VideoRenderApplicationService(domainLogger, viewableTracker);
+    const sut = new VideoRenderApplicationService(
+      domainLogger,
+      viewableTracker
+    );
     const bid = {
       mediaType: "video" as const,
       playerWidth: 640,
@@ -194,7 +213,8 @@ describe("Video render application service", () => {
               adClickable: true,
               adText: "Learn More",
               roll: "preRoll",
-              vastTag: "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
+              vastTag:
+                "data:text/xml;charset=utf-8;base64,PFZBU1Q+PC9WQVNUPg==",
             },
           ],
           vastAdvanced: {
@@ -205,15 +225,18 @@ describe("Video render application service", () => {
     );
   });
 
-  it('インプレッションビューアブルイベントが追跡される', async () => {
+  it("track impression viewable event", async () => {
     const domainLogger = mock<IDomainLogger>();
     const target = document.getElementById("target") as HTMLDivElement;
     const viewableTracker = mock<IViewableTracker>({
       trackViewableVideo50: (_, callback) => {
         callback();
-      }
+      },
     });
-    const sut = new VideoRenderApplicationService(domainLogger, viewableTracker);
+    const sut = new VideoRenderApplicationService(
+      domainLogger,
+      viewableTracker
+    );
     const bid = {
       mediaType: "video" as const,
       playerWidth: 640,
@@ -227,7 +250,7 @@ describe("Video render application service", () => {
         imageUrl: "https://example.com/logo",
         clickUrl: "https://example.com/clickurl",
       },
-      onImpressionViewable: impressionViewableMock
+      onImpressionViewable: impressionViewableMock,
     });
 
     expect(impressionViewableMock).toHaveBeenCalledOnce();

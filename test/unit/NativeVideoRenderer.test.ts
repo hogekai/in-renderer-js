@@ -9,7 +9,7 @@ describe("Native video renderer", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("動画アセットが描画される", async () => {
+  it("render video asset", async () => {
     const fluidPlayerMock = vi.mocked(fluidPlayer);
     const target = document.getElementById("target") as HTMLDivElement;
     target.innerHTML =
@@ -28,7 +28,7 @@ describe("Native video renderer", () => {
     expect(fluidPlayerMock).toHaveBeenCalledOnce();
   });
 
-  it("動画アセットの対象要素にプレイヤーの幅が指定されていない場合は不正が検出される", async () => {
+  it("throws error when player width is not specified in target video element", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     target.innerHTML =
       '<div class="in-renderer-native-video" data-asset-id="1" data-player-height="480"></div>';
@@ -46,7 +46,7 @@ describe("Native video renderer", () => {
     ).rejects.toThrow(InvalidNativeVideoContainerException);
   });
 
-  it("動画アセットの対象要素にプレイヤーの高さが指定されていない場合は不正が検出される", async () => {
+  it("throws error when player height is not specified in target video element", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     target.innerHTML =
       '<div class="in-renderer-native-video" data-asset-id="1" data-player-width="640"></div>';
@@ -64,7 +64,7 @@ describe("Native video renderer", () => {
     ).rejects.toThrow(InvalidNativeVideoContainerException);
   });
 
-  it("動画アセットの対象要素にアセットIDが指定されていない場合は不正が検出される", async () => {
+  it("throws error when asset id is not specified in target video element", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     target.innerHTML =
       '<div class="in-renderer-native-video" data-player-width="640"></div>';

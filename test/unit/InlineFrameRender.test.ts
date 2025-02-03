@@ -5,7 +5,7 @@ describe("Inline frame render", () => {
     document.body.innerHTML = '<div id="target"></div>';
   });
 
-  it("インラインフレームが描画される", () => {
+  it("render inline frame", () => {
     const sut = new InlineFrameRender();
     const target = document.getElementById("target") as HTMLDivElement;
     const bid = {
