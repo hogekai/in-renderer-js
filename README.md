@@ -1,5 +1,11 @@
 # InRenderer.js
 
+## Examples
+
+- [Prebid.org Multi-Format Example](https://docs.prebid.org/dev-docs/examples/multi-format-example.html)
+- [Prebid.org In-renderer Integration Example](https://docs.prebid.org/dev-docs/examples/in-renderer-integration.html)
+- [Prebid.org Out-stream Example](https://docs.prebid.org/examples/video/outstream/pb-ve-outstream-no-server.html)
+
 ## Basic Usage
 
 ```js
@@ -10,21 +16,21 @@ var adUnit = {
       sizes: [[300, 250]],
     },
     video: {
-      context: 'outstream',
-      mimes: ['video/mp4']
-    }
+      context: "outstream",
+      mimes: ["video/mp4"],
+    },
   },
   bids: [
     {
       bidder: "nextadjs",
     },
-  ], 
-  // Newly added property
+  ],
+  // Add new property
   renderer: {
     url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
     render: (bid) => {
-      var inRenderer = new InRenderer();
-      inRenderer.render("ad-unit-1", bid); // Remember to change the first argument! (target-element id)
+      var inRenderer = new window.InRenderer();
+      inRenderer.render(bid.adUnitCode, bid);
     },
   },
 };
@@ -70,8 +76,9 @@ var adUnit = {
     {
       bidder: "michao",
       params: {
-        placement: "123",
-        site: 123,
+        placement: "inbanner",
+        site: 1,
+        test: true,
       },
     },
   ],
@@ -92,15 +99,15 @@ var adUnit = {
     {
       bidder: "michao",
       params: {
-        placement: "123",
-        site: 123,
+        placement: "inbanner",
+        site: 1,
       },
     },
   ], // Newly added property
   renderer: {
     url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
     render: (bid) => {
-      var inRenderer = new InRenderer();
+      var inRenderer = new window.InRenderer();
       inRenderer.render("{AD_UNIT_TARGET_ELEMENT_ID}", bid);
     },
   },
@@ -129,15 +136,15 @@ var adUnit = {
     {
       bidder: "michao",
       params: {
-        placement: "123",
-        site: 123,
+        placement: "inbanner",
+        site: 1,
       },
     },
   ],
   renderer: {
     url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
     render: (bid) => {
-      var inRenderer = new InRenderer();
+      var inRenderer = new window.InRenderer();
       inRenderer.render("ad-unit-1", bid); // Replaced with `ad-unit-1`
     },
   },
@@ -175,15 +182,15 @@ var adUnit = {
     {
       bidder: "michao",
       params: {
-        placement: "123",
-        site: 123,
+        placement: "inbanner",
+        site: 1,
       },
     },
   ],
   renderer: {
     url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
     render: (bid) => {
-      var inRenderer = new InRenderer();
+      var inRenderer = new window.InRenderer();
       inRenderer.render("ad-unit-1", bid);
     },
   },
@@ -218,7 +225,7 @@ var adUnit = {
       api: [2],
     },
     native: {
-      adTemplate: `<div style="width: 300px; height:250px; background-image: url(##hb_native_asset_id_1##);">`,
+      adTemplate: `<div style="width: 300px; height:250px; background-image: url(##hb_native_asset_id_1##);"></div>`,
       ortb: {
         assets: [
           {
@@ -238,15 +245,16 @@ var adUnit = {
     {
       bidder: "michao",
       params: {
-        placement: "123",
-        site: 123,
+        placement: "inbanner",
+        site: 1,
+        test: true,
       },
     },
   ],
   renderer: {
     url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
     render: (bid) => {
-      var inRenderer = new InRenderer();
+      var inRenderer = new window.InRenderer();
       inRenderer.render("ad-unit-1", bid);
     },
   },
@@ -285,7 +293,7 @@ var adUnits = [
     code: "ad-unit-1",
     mediaTypes: {
       native: {
-        adTemplate: `<div class="in-renderer-native-video" data-asset-id="1" data-player-width="320" data-player-height="180">`,
+        adTemplate: `<div class="in-renderer-native-video" data-asset-id="1" data-player-width="320" data-player-height="180"></div>`,
         ortb: {
           assets: [
             {
@@ -306,7 +314,7 @@ var adUnits = [
     renderer: {
       url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
       render: (bid) => {
-        var inRenderer = new InRenderer();
+        var inRenderer = new window.InRenderer();
         inRenderer.render("ad-unit-1", bid);
       },
     },
@@ -314,8 +322,9 @@ var adUnits = [
       {
         bidder: "michao",
         params: {
-          placement: "123",
-          site: 123,
+          placement: "inbanner",
+          site: 1,
+          test: true,
         },
       },
     ],
@@ -346,7 +355,7 @@ var adUnits = [
         api: [2],
       },
       native: {
-        adTemplate: `<div style="width: 300px; height:250px; background-image: url(##hb_native_asset_id_1##);">`,
+        adTemplate: `<div style="width: 300px; height:250px; background-image: url(##hb_native_asset_id_1##);"></div>`,
         ortb: {
           assets: [
             {
@@ -365,7 +374,7 @@ var adUnits = [
     renderer: {
       url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
       render: (bid) => {
-        var inRenderer = new InRenderer();
+        var inRenderer = new window.InRenderer();
         inRenderer.render("ad-unit-1", bid);
       },
     },
@@ -373,8 +382,9 @@ var adUnits = [
       {
         bidder: "michao",
         params: {
-          placement: "123",
-          site: 123,
+          placement: "inbanner",
+          site: 1,
+          test: true,
         },
       },
     ],
@@ -384,7 +394,7 @@ var adUnits = [
     code: "ad-unit-1",
     mediaTypes: {
       native: {
-        adTemplate: `<div class="in-renderer-native-video" data-asset-id="1" data-player-width="320" data-player-height="180">`,
+        adTemplate: `<div class="in-renderer-native-video" data-asset-id="1" data-player-width="320" data-player-height="180"></div>`,
         ortb: {
           assets: [
             {
@@ -405,7 +415,7 @@ var adUnits = [
     renderer: {
       url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js",
       render: (bid) => {
-        var inRenderer = new InRenderer();
+        var inRenderer = new window.InRenderer();
         inRenderer.render("ad-unit-1", bid);
       },
     },
@@ -413,8 +423,9 @@ var adUnits = [
       {
         bidder: "michao",
         params: {
-          placement: "123",
-          site: 123,
+          placement: "inbanner",
+          site: 1,
+          test: true,
         },
       },
     ],
@@ -426,8 +437,8 @@ var adUnits = [
 
 InRenderer.js provides specialized entry points for rendering video ads and native ads. In specific use cases, you might need to render only video ads, for example. Utilize multiple entry points along with renderer settings per mediaTypes as described in the [Prebid.js renderer documentation](https://docs.prebid.org/dev-docs/show-outstream-video-ads.html).
 
-| URL                                                                                   | Class            | Description                      |
-| ------------------------------------------------------------------------------------- | ---------------- | -------------------------------- |
+| URL                                                                              | Class            | Description                      |
+| -------------------------------------------------------------------------------- | ---------------- | -------------------------------- |
 | https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-renderer.umd.min.js        | InRenderer       | Render banner, video, and native |
 | https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-video-renderer.umd.min.js  | InVideoRenderer  | Render video only                |
 | https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-native-renderer.umd.min.js | InNativeRenderer | Render native only               |
@@ -449,7 +460,7 @@ var adUnits = [
         renderer: {
           url: "https://cdn.jsdelivr.net/npm/in-renderer-js@1/dist/in-video-renderer.umd.min.js",
           render: (bid) => {
-            var inRenderer = new InVideoRenderer();
+            var inRenderer = new window.InVideoRenderer();
             inRenderer.render("video", bid);
           },
         },
@@ -459,8 +470,9 @@ var adUnits = [
       {
         bidder: "michao",
         params: {
-          placement: "123",
-          site: 123,
+          placement: "inbanner",
+          site: 1,
+          test: true,
         },
       },
     ],
