@@ -13,9 +13,10 @@ export class VideoAdRender {
   public render(
     targetElement: HTMLDivElement,
     bid: VideoBid,
-    videoPlayer: IVideoPlayer
+    videoPlayer: IVideoPlayer,
+    fullClickArea?: boolean
   ) {
-    this.renderContainer(targetElement, bid);
+    this.renderContainer(targetElement, bid, fullClickArea);
 
     this.viewableTracker.trackViewable(targetElement, () => {
       videoPlayer.play();
@@ -34,12 +35,16 @@ export class VideoAdRender {
     });
   }
 
-  private renderContainer(targetElement: HTMLDivElement, bid: VideoBid) {
+  private renderContainer(targetElement: HTMLDivElement, bid: VideoBid, fullClickArea?: boolean) {
     const aspectRatio = bid.playerHeight / bid.playerWidth;
 
     targetElement.style.display = "block";
     targetElement.style.maxWidth = `${bid.playerWidth}px`;
     targetElement.style.width = "100%";
+
+    if (fullClickArea) {
+      targetElement.classList.add("full-click-area");
+    }
 
     const containerWidth = targetElement.offsetWidth;
     const height = containerWidth * aspectRatio;

@@ -32,6 +32,7 @@ export class InRenderer {
       videoRenderApplicationService.render(target, bid, {
         logo: options.logo,
         onImpressionViewable: options.onImpressionViewable,
+        fullClickArea: options.fullClickArea,
       });
     } else if (bid.mediaType === "banner") {
       const bannerRenderApplicationService = new BannerRenderApplicationService(

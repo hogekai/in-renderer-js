@@ -6,6 +6,7 @@ type LogoOption = {
 export type VideoRenderOptions = {
   logo?: LogoOption;
   onImpressionViewable?: () => void;
+  fullClickArea?: boolean;
 };
 
 export type FluidPlayerFactoryOptions = {
@@ -27,11 +28,13 @@ export type InRendererOptions = {
   clickThrough?: string;
   logo?: LogoOption;
   onImpressionViewable?: () => void;
+  fullClickArea?: boolean;
 };
 
 export type InVideoRendererOptions = {
   onImpressionViewable?: () => void;
   logo?: LogoOption;
+  fullClickArea?: boolean;
 };
 
 export type InNativeRendererOptions = {

@@ -8,7 +8,7 @@ describe("Video ad render", () => {
   });
 
   // render video ad container
-  it("動画広告コンテナが描画される", async () => {
+  it("render video ad container", async () => {
     const target = document.getElementById("target") as HTMLDivElement;
     Object.defineProperty(target, "offsetWidth", {
       get: vi.fn().mockReturnValue(640),
@@ -31,6 +31,28 @@ describe("Video ad render", () => {
     expect(target.style.height).toBe("480px");
     expect(target.style.maxWidth).toBe("640px");
     expect(target.style.display).toBe("block");
+  });
+
+  it("render full click area", async () => {
+    const target = document.getElementById("target") as HTMLDivElement;
+    Object.defineProperty(target, "offsetWidth", {
+      get: vi.fn().mockReturnValue(640),
+    });
+    const player = {
+      play: vi.fn(),
+      pause: vi.fn(),
+    };
+    const viewableTracker = mock<IViewableTracker>();
+    const sut = new VideoAdRender(viewableTracker);
+
+    sut.render(target, {
+      mediaType: "video",
+      playerWidth: 640,
+      playerHeight: 480,
+      vastUrl: "https://example.com/vasturl",
+    }, player, true);
+
+    expect(target.classList.contains("full-click-area")).toBe(true);
   });
 
   it('play video ad when in viewport', async () => {

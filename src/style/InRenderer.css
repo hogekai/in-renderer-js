@@ -130,3 +130,15 @@
     }
   }
 }
+
+.full-click-area {
+  .fluid_player_layout_in-renderer-js {
+
+    @media (max-width: 500px) {
+      .vast_clickthrough_layer {
+        height: 100% !important;
+      }
+    }
+
+  }
+}

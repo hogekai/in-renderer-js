@@ -33,7 +33,7 @@ export class VideoRenderApplicationService {
       );
 
       const videoAdRender = new VideoAdRender(this.viewableTracker);
-      videoAdRender.render(targetElement, bid, fluidPlayer);
+      videoAdRender.render(targetElement, bid, fluidPlayer, options.fullClickArea);
       this.viewableTracker.trackViewableVideo50(targetElement, () => {
         if (options.onImpressionViewable) {
           options.onImpressionViewable();

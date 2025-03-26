@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InRenderer.js Video Test Page</title>
 
-    <script async src="./resource/prebid.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/not-for-prod/prebid.js"></script>
 
     <script type="module">
       import { InRenderer } from "@/InRenderer";
@@ -29,7 +29,9 @@
             url: "./resource/fakeRenderer.js",
             render: (bid) => {
               const inRenderer = new InRenderer();
-              inRenderer.render("video", bid);
+              inRenderer.render("video", bid, {
+                fullClickArea: true
+              });
             },
           },
           bids: [
@@ -38,6 +40,7 @@
               params: {
                 placement: "123",
                 site: 123,
+                test: true
               },
             },
           ],
