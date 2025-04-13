@@ -541,6 +541,24 @@ inRenderer.render("ad-unit-1", bid, {
 });
 ```
 
+## Development
+
+First install dependencies:
+
+```sh
+pnpm install
+```
+
+Then configure needed modules and bidders in [test/integration/e2e/](./test/integration/e2e/).
+
+[Modules included by default](./test/integration/e2e/resource/prebid.js#L3).
+
+And start project locally:
+
+```sh
+pnpm run dev
+```
+
 ## From the Developer
 
 Recently, I've felt that the open-source community in web ad technology has been stagnating. While there are various factors contributing to this, I don't want to accept this situation as it is. I plan to develop various modern solutions, from small to large scale, to energize this industry.
