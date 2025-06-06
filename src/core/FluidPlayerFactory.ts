@@ -21,7 +21,7 @@ export class FluidPlayerFactory {
     this.options = options;
   }
 
-  public async create(rePlay: () => any): Promise<FluidPlayerInstance> {
+  public async create(rePlay: () => any, videoEnded?: () => any): Promise<FluidPlayerInstance> {
     const player = fluidPlayer(this.target, {
       layoutControls: {
         roundedCorners: 8,
@@ -66,6 +66,7 @@ export class FluidPlayerFactory {
         vastAdvanced: {
           vastVideoEndedCallback: () => {
             this.attachEndCard(player, rePlay);
+            videoEnded && videoEnded();
           },
         },
       },

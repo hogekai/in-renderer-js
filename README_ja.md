@@ -499,6 +499,20 @@ inRenderer.render("ad-unit-1", bid, {
 });
 ```
 
+#### 動画広告の完了をフックする
+
+- `onAdVideoComplete`
+
+```js
+var inRenderer = new InRenderer();
+inRenderer.render("ad-unit-1", bid, {
+  onAdVideoComplete: () => {
+    console.log("ad video completed!");
+  },
+});
+```
+
+
 ## 開発者から
 
 最近、Webのアドテクノロジーでオープンソースコミュニティが停滞していると感じています。様々な要因があると思いますが、私はこの状況をよしとはしたくありません。これから小規模から大規模まで、様々なモダンなソリューションを開発し、この業界を盛り上げたいと考えています。

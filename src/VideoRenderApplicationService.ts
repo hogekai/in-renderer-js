@@ -28,12 +28,18 @@ export class VideoRenderApplicationService {
         vastXml: bid.vastXml,
         logo: options.logo,
       });
-      const fluidPlayer = await fluidPlayerFactory.create(() =>
-        this.render(targetElement, bid, options)
+      const fluidPlayer = await fluidPlayerFactory.create(
+        () => this.render(targetElement, bid, options),
+        options.onAdVideoComplete
       );
 
       const videoAdRender = new VideoAdRender(this.viewableTracker);
-      videoAdRender.render(targetElement, bid, fluidPlayer, options.fullClickArea);
+      videoAdRender.render(
+        targetElement,
+        bid,
+        fluidPlayer,
+        options.fullClickArea
+      );
       this.viewableTracker.trackViewableVideo50(targetElement, () => {
         if (options.onImpressionViewable) {
           options.onImpressionViewable();

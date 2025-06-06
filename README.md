@@ -541,6 +541,19 @@ inRenderer.render("ad-unit-1", bid, {
 });
 ```
 
+### Listen for ad video completion
+
+- `onAdVideoComplete`
+
+```js
+var inRenderer = new InRenderer();
+inRenderer.render("ad-unit-1", bid, {
+  onAdVideoComplete: () => {
+    console.log("ad video completed!");
+  },
+});
+```
+
 ## Development
 
 First install dependencies:

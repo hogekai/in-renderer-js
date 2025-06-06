@@ -6,6 +6,7 @@ type LogoOption = {
 export type VideoRenderOptions = {
   logo?: LogoOption;
   onImpressionViewable?: () => void;
+  onAdVideoComplete?: () => void;
   fullClickArea?: boolean;
 };
 
@@ -33,6 +34,7 @@ export type InRendererOptions = {
 
 export type InVideoRendererOptions = {
   onImpressionViewable?: () => void;
+  onAdVideoComplete?: () => void;
   logo?: LogoOption;
   fullClickArea?: boolean;
 };
