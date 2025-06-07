@@ -29,6 +29,7 @@ export type InRendererOptions = {
   clickThrough?: string;
   logo?: LogoOption;
   onImpressionViewable?: () => void;
+  onAdVideoComplete?: () => void;
   fullClickArea?: boolean;
 };
 
