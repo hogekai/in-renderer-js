@@ -1,5 +1,4 @@
-import 'intersection-observer';
-import '@/style/InRenderer.css';
+import "@/style/InRenderer.css";
 import { VideoBid } from "@/type/bid";
 import { IVideoPlayer, IViewableTracker } from "@/type/interface";
 
@@ -35,7 +34,11 @@ export class VideoAdRender {
     });
   }
 
-  private renderContainer(targetElement: HTMLDivElement, bid: VideoBid, fullClickArea?: boolean) {
+  private renderContainer(
+    targetElement: HTMLDivElement,
+    bid: VideoBid,
+    fullClickArea?: boolean
+  ) {
     const aspectRatio = bid.playerHeight / bid.playerWidth;
 
     targetElement.style.display = "block";

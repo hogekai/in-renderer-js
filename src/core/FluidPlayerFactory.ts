@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import { InvalidBidException } from "@/exception/InvalidBidException";
 import { i18n } from "@/I18N";
 import { fluidPlayer } from "@/lib/fluidPlayer";
@@ -21,7 +20,10 @@ export class FluidPlayerFactory {
     this.options = options;
   }
 
-  public async create(rePlay: () => any, videoEnded?: () => any): Promise<FluidPlayerInstance> {
+  public async create(
+    rePlay: () => any,
+    videoEnded?: () => any
+  ): Promise<FluidPlayerInstance> {
     const player = fluidPlayer(this.target, {
       layoutControls: {
         roundedCorners: 8,

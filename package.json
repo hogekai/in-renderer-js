@@ -68,8 +68,6 @@
     "fluid-player": "^3.49.0",
     "i18next": "^24.2.1",
     "i18next-browser-languagedetector": "^8.0.2",
-    "intersection-observer": "^0.12.2",
-    "js-base64": "^3.7.7",
-    "whatwg-fetch": "^3.6.20"
+    "js-base64": "^3.7.7"
   }
 }
